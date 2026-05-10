@@ -1,7 +1,7 @@
-import { User, FolderGit2, Award, Code2, Send, Activity } from "lucide-react";
+import { User, FolderGit2, Award, Code2, Send, Activity, type LucideIcon } from "lucide-react";
 import type { Candidate, ActivityItem } from "@/types/candidate";
 
-const ACTIVITY_ICONS: Record<ActivityItem["type"], React.ComponentType<{ size?: number; className?: string }>> = {
+const ACTIVITY_ICONS: Record<ActivityItem["type"], LucideIcon> = {
   profile_update: User,
   project_added: FolderGit2,
   cert_earned: Award,
