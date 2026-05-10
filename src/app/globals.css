@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 79 107 255;
+    --primary-dark: 59 91 250;
+    --purple: 124 93 250;
+    --bg: 247 249 252;
+    --surface: 255 255 255;
+    --border: 229 233 240;
+    --text: 15 23 42;
+    --text-light: 71 85 105;
+    --text-muted: 148 163 184;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-r {
+    background: linear-gradient(135deg, #4F6BFF 0%, #7C5DFA 100%);
+  }
+}
