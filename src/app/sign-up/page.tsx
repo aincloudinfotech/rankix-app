@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { Eye, EyeOff, Check, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { GitHubIcon, GoogleIcon, LinkedInIcon } from "@/components/brand/OAuthIcons";
@@ -43,7 +43,7 @@ function passwordStrength(password: string): { score: number; label: string; col
   return { score, label: labels[score], color: colors[score] };
 }
 
-export default function SignUpPage() {
+function SignUpForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const role = (searchParams.get("role") as "candidate" | "employer") || "candidate";
@@ -270,5 +270,30 @@ export default function SignUpPage() {
         </Link>
       </p>
     </div>
+  );
+}
+
+function SignUpFallback() {
+  return (
+    <div className="min-h-screen bg-bg flex flex-col items-center justify-center px-6 py-12">
+      <Logo variant="compact" className="mb-8" />
+      <div className="w-full max-w-md bg-surface border border-border rounded-2xl p-8 shadow-sm">
+        <div className="h-7 w-48 bg-border-light rounded animate-pulse mb-2" />
+        <div className="h-4 w-64 bg-border-light rounded animate-pulse mb-6" />
+        <div className="space-y-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-11 bg-border-light rounded-lg animate-pulse" />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function SignUpPage() {
+  return (
+    <Suspense fallback={<SignUpFallback />}>
+      <SignUpForm />
+    </Suspense>
   );
 }
