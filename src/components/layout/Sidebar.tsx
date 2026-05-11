@@ -16,6 +16,7 @@ import {
   Crown
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/brand/Logo";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutGrid },
@@ -36,21 +37,8 @@ export function Sidebar() {
   return (
     <aside className="hidden lg:flex w-60 bg-surface border-r border-border-light flex-col sticky top-0 h-screen flex-shrink-0">
       {/* Logo */}
-      <div className="px-5 py-6 flex items-center gap-2.5">
-        <div className="w-9 h-9 rounded-[10px] gradient-r flex items-center justify-center text-white font-extrabold shadow-md">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M5 4h7a4 4 0 0 1 4 4v0a4 4 0 0 1-4 4H5V4zm0 8h6l5 8"
-              stroke="white"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <div className="font-extrabold text-lg text-text tracking-tight">
-          Rankix<span className="font-medium text-text-light text-base">.ai</span>
-        </div>
+      <div className="px-5 py-6">
+        <Logo variant="compact" />
       </div>
 
       {/* Nav */}
